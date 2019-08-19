@@ -1,7 +1,7 @@
 package mechanics;
 
 public abstract class Structure {
-    private String name;
+    protected String name;
 
     public Structure(String name) {
         this.name = name;

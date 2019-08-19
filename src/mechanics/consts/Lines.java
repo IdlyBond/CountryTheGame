@@ -11,7 +11,7 @@ public enum Lines {
     ENTER_MONUMENT_NAME("Именуйте достопримечательность:"),
     CHOOSE_TOWN("Выберите город:"),
     CHOOSE_STREET("Выберите улицу:"),
-    CHOOSE_BUILDING("Выберите улицу:"),
+    CHOOSE_BUILDING("Выберите здание:"),
     CHOOSE_BUILDING_TYPE("Выберите тип строения:"),
     NO_TOWN("У вас нет городов! Вам даже негде спать!"),
     NO_STREET("У вас нет улиц!"),

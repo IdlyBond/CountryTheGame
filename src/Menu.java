@@ -16,12 +16,15 @@ public class Menu {
     public void menu() {
         while (true) {
             System.out.println(getMenuLine());
-            switch (printNumber(0, 2)) {
+            switch (printNumber(0, 3)) {
                 case 1:
                     buildMenu();
                     break;
                 case 2:
                     doStep();
+                    break;
+                case 3:
+                    removeBuilding();
                     break;
                 case 0:
                     return;
@@ -50,11 +53,16 @@ public class Menu {
         worker.resetBuilt();
     }
 
+    private void removeBuilding(){
+        worker.removeBuilding();
+    }
+
     private String getMenuLine() {
         return Printer.printMenuWindow(country,
                 "Выберите действие: \n" +
-                        "1) Построить сооружение.\n" +
+                        "1) Построить здание.\n" +
                         "2) Пойти спать. \n" +
+                        "3) Удалить здание. \n" +
                         "0) Назад. ");
     }
 

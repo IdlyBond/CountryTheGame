@@ -6,7 +6,7 @@ import mechanics.consts.Values;
 
 import java.util.List;
 
-public class Workers {
+public class Checker {
 
     public static boolean checkEmptyTowns(final List<Region> list) {
         if (list.isEmpty()) {
@@ -40,7 +40,7 @@ public class Workers {
         return false;
     }
 
-    public static boolean checkSizeTowns(final List<Region> list) {
+    public static boolean checkMaxSizeTowns(final List<Region> list) {
         if (list.size() >= Values.MAX_TOWNS.get()) {
             System.out.println(Lines.MAX_TOWN);
             return true;
@@ -48,7 +48,7 @@ public class Workers {
         return false;
     }
 
-    public static boolean checkSizeStreets(final List<Region> list) {
+    public static boolean checkMaxSizeStreets(final List<Region> list) {
         if (list.size() >= Values.MAX_STREETS_IN_TOWN.get()) {
             System.out.println(Lines.MAX_STREET);
             return true;
@@ -56,7 +56,7 @@ public class Workers {
         return false;
     }
 
-    public static boolean checkSizeBuildings(final List<Building> list) {
+    public static boolean checkMaxSizeBuildings(final List<Building> list) {
         if (list.size() >= Values.MAX_BUILDINGS_ON_STREET.get()) {
             System.out.println(Lines.MAX_BUILDING);
             return true;

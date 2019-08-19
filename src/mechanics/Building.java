@@ -39,6 +39,5 @@ public abstract class Building extends Structure{
 
     public String getPerks(){
         return Printer.getStatistic(budget, happiness, ecology, tourism);
-
     }
 }

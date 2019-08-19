@@ -244,8 +244,4 @@ public class Printer {
         return getStatistic(budget, happiness, ecology, tourism);
     }
 
-    private static int roundAroundZero(){
-
-    }
-
 }

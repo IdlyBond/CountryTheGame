@@ -11,9 +11,9 @@ public class Game {
 
     public Game() {
         System.out.println(Lines.WELCOME);
-        this.country = Worker.getCountry();
-        this.menu = new Menu(country);
+        initialization();
         setStartBudget();
+        this.menu = new Menu(country);
     }
 
     public Game(Country country) {
@@ -35,6 +35,14 @@ public class Game {
                     return;
             }
         }
+    }
+
+    private void initialization(){
+        this.country = Worker.getCountry();
+        System.out.println(Lines.NAME_FIRST_TOWN);
+        this.country.addTown(Printer.printLine());
+        System.out.println(Lines.NAME_FIRST_STREET);
+        this.country.getTown(0).addStreet(Printer.printLine());
     }
 
     private void setStartBudget(){

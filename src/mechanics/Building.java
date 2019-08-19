@@ -5,10 +5,10 @@ import mechanics.utils.Printer;
 import java.util.ArrayList;
 
 public abstract class Building extends Structure{
-    protected static int happiness;
-    protected static int budget;
-    protected static int ecology;
-    protected static int tourism;
+    protected static double happiness;
+    protected static double budget;
+    protected static double ecology;
+    protected static double tourism;
 
     public void work(Statistic statistic) {
         statistic.changeHappiness(happiness);
@@ -21,19 +21,19 @@ public abstract class Building extends Structure{
         super(name);
     }
 
-    public int getHappiness() {
+    public double getHappiness() {
         return happiness;
     }
 
-    public int getBudget() {
+    public double getBudget() {
         return budget;
     }
 
-    public int getEcology() {
+    public double getEcology() {
         return ecology;
     }
 
-    public int getTourism() {
+    public double getTourism() {
         return tourism;
     }
 

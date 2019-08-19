@@ -1,6 +1,7 @@
 package mechanics.utils;
 
 import mechanics.Country;
+import mechanics.Region;
 import mechanics.Street;
 import mechanics.Town;
 import mechanics.consts.BuildingPerks;
@@ -79,18 +80,36 @@ public class Printer {
         return createFrame(out.toString());
     }
 
-    public static String getStreetList(Town town){
+/*    public static String getStreetList(Town town){
         StringBuilder out = new StringBuilder();
         for (int i = 0; i < town.getStreets().size(); i++) {
-            out.append(i + 1).append(") ").append(town.getStreet(i).getName()).append("\n");
+            out.append(i + 1).append(") ").append(town.getStreet(i).getName())
+                    .append(" (").append(town.getStreet(i).getBuildings().size()).append(")").append("\n");
+        }
+        return out.toString();
+    }*/
+
+    public static String getStreetList(Town town){
+        StringBuilder out = new StringBuilder();
+        for (int i = 0; i < town.getStreets().size(); i++){
+            out.append(getStreetPicture(town.getStreet(i), i)).append("\n");
         }
         return out.toString();
     }
+
     public static String getStreetPicture(Street street){
         if(street.getBuildings().isEmpty()) return getRoadPicture(street, Values.STANDARD_ROAD_LENGTH.get());
         StringBuilder out = new StringBuilder();
         out.append(getBuildings(street));
         out.append(getRoadPicture(street, makeLineArray(out.toString())[0].length()));
+        return out.toString();
+    }
+
+    public static String getStreetPicture(Street street, int index){
+        if(street.getBuildings().isEmpty()) return getRoadPicture(street, Values.STANDARD_ROAD_LENGTH.get(), index + 1);
+        StringBuilder out = new StringBuilder();
+        out.append(getBuildings(street));
+        out.append(getRoadPicture(street, makeLineArray(out.toString())[0].length(),index+ 1));
         return out.toString();
     }
 
@@ -118,6 +137,16 @@ public class Printer {
         out.append("___").append(street.getName()).append(getSymbols(length - street.getName().length() - 2, "_")).append("\n");
         return out.toString();
     }
+
+    private static String getRoadPicture(Street street, int length, int index){
+        StringBuilder out = new StringBuilder();
+        out.append(getSymbols(length, "_")).append("\n");
+        out.append(getSymbols(length, "-")).append("\n");
+        out.append("___").append(street.getName()).append("(").append(index).append(")").append(getSymbols(length - street.getName().length() - 6, "_")).append("\n");
+        return out.toString();
+    }
+
+
 
     private static String alignPicture(String first, String second){
         String[] firsts = makeLineArray(first);
@@ -169,22 +198,22 @@ public class Printer {
     }
 
 
-    public static String getStatistic(int budget, int happiness, int ecology, int tourism){
-        return " " + Icons.BUDGET_ICON.get() + ": " + budget +
-                " " + Icons.HAPPINESS_ICON.get() + ": " + happiness +
-                " " + Icons.ECOLOGY_ICON.get() + ": " + ecology +
-                " " + Icons.TOURISM_ICON.get() + ": " + tourism;
+    public static String getStatistic(double budget, double happiness, double ecology, double tourism){
+        return " " + Icons.BUDGET_ICON.get() + ":" + ((Math.round(budget) == budget)? (int)budget: budget)  +
+                " " + Icons.HAPPINESS_ICON.get() + ":" + (int)Math.ceil(happiness) +
+                " " + Icons.ECOLOGY_ICON.get() + ":" + (int)Math.ceil(ecology) +
+                " " + Icons.TOURISM_ICON.get() + ":" + (int)Math.ceil(tourism);
     }
 
     public static String getStatistic(Country country){
-        return " " + Icons.BUDGET_ICON.get() + ": " + country.getStatistics().getBudgetValue() +
-                " " + Icons.HAPPINESS_ICON.get() + ": " + country.getStatistics().getHappinessValue() +
-                " " + Icons.ECOLOGY_ICON.get() + ": " + country.getStatistics().getEcologyValue() +
-                " " + Icons.TOURISM_ICON.get() + ": " + country.getStatistics().getTourismValue();
+        return getStatistic(country.getStatistics().getBudgetValue(),
+                country.getStatistics().getHappinessValue(),
+                country.getStatistics().getEcologyValue(),
+                country.getStatistics().getTourismValue());
     }
 
     public static String getStatistic(BuildingTypes type){
-        int budget, happiness, ecology, tourism;
+        double budget, happiness, ecology, tourism;
         if(type == BuildingTypes.HOSPITAL){
             happiness = BuildingPerks.HOSPITAL_HAPPINESS.get();
             budget = BuildingPerks.HOSPITAL_BUDGET.get();
@@ -212,10 +241,7 @@ public class Printer {
         else{
             happiness = budget = ecology = tourism = 0;
         }
-        return " " + Icons.BUDGET_ICON.get() + ": " + budget +
-                " " + Icons.HAPPINESS_ICON.get() + ": " + happiness +
-                " " + Icons.ECOLOGY_ICON.get() + ": " + ecology +
-                " " + Icons.TOURISM_ICON.get() + ": " + tourism;
+        return getStatistic(budget, happiness, ecology, tourism);
     }
 
 }

@@ -19,6 +19,8 @@ public enum Lines {
     MAX_BUILDING("На этой улице не помещаются здания!"),
     MAX_STREET("В этом городе слишком много улиц!"),
     MAX_TOWN("У вас слишком много городов!"),
+    NAME_FIRST_TOWN("Дайте назание своему первому городу!"),
+    NAME_FIRST_STREET("Дайте назание своей первой улице!"),
 
     STRUCTURE_ALREADY_CREATED("Вы уже строили на этом ходу!"),
     NOT_ENOUGH_MONEY("Недостаточно денег!"),

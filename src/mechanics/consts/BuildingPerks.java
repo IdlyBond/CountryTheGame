@@ -1,36 +1,36 @@
 package mechanics.consts;
 
 public enum BuildingPerks {
-    HOSPITAL_HAPPINESS(5),
-    HOSPITAL_BUDGET(-5),
-    HOSPITAL_ECOLOGY(0),
-    HOSPITAL_TOURISM(0),
+    HOSPITAL_HAPPINESS(1),
+    HOSPITAL_BUDGET(-15),
+    HOSPITAL_ECOLOGY(-0.2),
+    HOSPITAL_TOURISM(0.2),
 
-    SCHOOL_HAPPINESS(0),
-    SCHOOL_BUDGET(0),
-    SCHOOL_ECOLOGY(0),
-    SCHOOL_TOURISM(0),
+    SCHOOL_HAPPINESS(1),
+    SCHOOL_BUDGET(-10),
+    SCHOOL_ECOLOGY(-0.4),
+    SCHOOL_TOURISM(0.2),
 
-    MONUMENT_HAPPINESS(0),
-    MONUMENT_BUDGET(0),
-    MONUMENT_ECOLOGY(0),
-    MONUMENT_TOURISM(0),
+    MONUMENT_HAPPINESS(2),
+    MONUMENT_BUDGET(-20),
+    MONUMENT_ECOLOGY(2),
+    MONUMENT_TOURISM(4),
 
-    FACTORY_HAPPINESS(-5),
-    FACTORY_BUDGET(5),
-    FACTORY_ECOLOGY(0),
-    FACTORY_TOURISM(0),
+    FACTORY_HAPPINESS(-2),
+    FACTORY_BUDGET(80),
+    FACTORY_ECOLOGY(-4),
+    FACTORY_TOURISM(-2),
 
 
     ;
 
-    private int number;
+    private double number;
 
-    BuildingPerks(int number) {
+    BuildingPerks(double number) {
         this.number = number;
     }
 
-    public int get() {
+    public double get() {
         return number;
     }
 }

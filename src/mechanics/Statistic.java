@@ -9,35 +9,35 @@ public class Statistic {
     private Ecology ecology = new Ecology();
     private Tourism tourism = new Tourism();
 
-    public int getHappinessValue() {
+    public double getHappinessValue() {
         return happiness.get();
     }
 
-    public void changeHappiness(int value){
+    public void changeHappiness(double value){
         happiness.change(value);
     }
 
-    public int getBudgetValue() {
+    public double getBudgetValue() {
         return budget.get();
     }
 
-    public void changeBudget(int value){
+    public void changeBudget(double value){
         budget.change(value);
     }
 
-    public int getEcologyValue() {
+    public double getEcologyValue() {
         return ecology.get();
     }
 
-    public void changeEcology(int value){
+    public void changeEcology(double value){
         ecology.change(value);
     }
 
-    public int getTourismValue() {
+    public double getTourismValue() {
         return tourism.get();
     }
 
-    public void changeTourism(int value){
+    public void changeTourism(double value){
         tourism.change(value);
     }
 

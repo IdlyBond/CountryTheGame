@@ -66,4 +66,8 @@ public class Menu {
                         "3) Построить город. (" + country.getTownCost() + ")\n" +
                         "0) Назад. ");
     }
+
+    public Worker getWorker() {
+        return worker;
+    }
 }

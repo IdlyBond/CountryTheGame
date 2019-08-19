@@ -200,9 +200,9 @@ public class Printer {
 
     public static String getStatistic(double budget, double happiness, double ecology, double tourism){
         return " " + Icons.BUDGET_ICON.get() + ":" + ((Math.round(budget) == budget)? (int)budget: budget)  +
-                " " + Icons.HAPPINESS_ICON.get() + ":" + (int)Math.ceil(happiness) +
-                " " + Icons.ECOLOGY_ICON.get() + ":" + (int)Math.ceil(ecology) +
-                " " + Icons.TOURISM_ICON.get() + ":" + (int)Math.ceil(tourism);
+                " " + Icons.HAPPINESS_ICON.get() + ":" + ((Math.round(happiness) == happiness)? (int)happiness: happiness) +
+                " " + Icons.ECOLOGY_ICON.get() + ":" + ((Math.round(ecology) == ecology)? (int)ecology: ecology) +
+                " " + Icons.TOURISM_ICON.get() + ":" + ((Math.round(tourism) == tourism)? (int)tourism: tourism);
     }
 
     public static String getStatistic(Country country){
@@ -242,6 +242,10 @@ public class Printer {
             happiness = budget = ecology = tourism = 0;
         }
         return getStatistic(budget, happiness, ecology, tourism);
+    }
+
+    private static int roundAroundZero(){
+
     }
 
 }

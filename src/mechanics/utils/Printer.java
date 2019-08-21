@@ -198,10 +198,10 @@ public class Printer {
 
 
     public static String getStatistic(double budget, double happiness, double ecology, double tourism){
-        return " " + Icons.BUDGET_ICON.get() + ":" + ((Math.round(budget) == budget)? (int)budget: budget)  +
-                " " + Icons.HAPPINESS_ICON.get() + ":" + ((Math.round(happiness) == happiness)? (int)happiness: happiness) +
-                " " + Icons.ECOLOGY_ICON.get() + ":" + ((Math.round(ecology) == ecology)? (int)ecology: ecology) +
-                " " + Icons.TOURISM_ICON.get() + ":" + ((Math.round(tourism) == tourism)? (int)tourism: tourism);
+        return " " + Icons.BUDGET_ICON.get() + ":" + Math.round(budget)  +
+                " " + Icons.HAPPINESS_ICON.get() + ":" + Math.round(happiness) +
+                " " + Icons.ECOLOGY_ICON.get() + ":" + Math.round(ecology) +
+                " " + Icons.TOURISM_ICON.get() + ":" + Math.round(tourism);
     }
 
     public static String getStatistic(Country country){

@@ -95,6 +95,7 @@ public class Worker {
         if (Objects.isNull(street)) return;
         if (Checker.checkEmptyBuildings(street.getBuildings())) return;
         street.getBuildings().remove(Searcher.chooseBuildingIndex(street));
+        isBuilt = true;
     }
 
     public void resetBuilt() {

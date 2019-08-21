@@ -1,6 +1,5 @@
 package mechanics;
 
-import mechanics.consts.Icons;
 import mechanics.utils.Printer;
 
 public class Statistic {
@@ -23,6 +22,10 @@ public class Statistic {
 
     public void changeBudget(double value){
         budget.change(value);
+    }
+
+    public void clearBudget(){
+        budget.value = 0;
     }
 
     public double getEcologyValue() {

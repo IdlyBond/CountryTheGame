@@ -30,7 +30,7 @@ public class Town extends Region {
     public void countStatistics(){
         if(getStreets().isEmpty()) return;
         for(Region street: streets) street.countStatistics();
-        Counter.countStatistics(streets, getStatistics());
+        Counter.countStatistics(streets, statistic);
         for(Region street: streets) street.clearBudget();
     }
 

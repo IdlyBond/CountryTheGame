@@ -1,4 +1,4 @@
-import mechanics.Building;
+import mechanics.buildings.Building;
 import mechanics.Country;
 import mechanics.Street;
 import mechanics.Town;

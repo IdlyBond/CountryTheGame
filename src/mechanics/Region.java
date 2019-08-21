@@ -1,7 +1,7 @@
 package mechanics;
 
 public abstract class Region extends Structure implements HasStatistics{
-    private Statistic statistic = new Statistic();
+    protected Statistic statistic = new Statistic();
 
     @Override
     public Statistic getStatistics() {
@@ -10,7 +10,7 @@ public abstract class Region extends Structure implements HasStatistics{
 
     @Override
     public void clearBudget(){
-        statistic.changeBudget(-statistic.getBudgetValue());
+        statistic.clearBudget();
     }
 
 

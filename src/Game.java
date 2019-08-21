@@ -30,10 +30,20 @@ public class Game {
                     menu.menu();
                     break;
                 case 2:
+                    credits();
                     break;
                 case 0:
                     return;
             }
+        }
+    }
+
+    private void credits(){
+        while(true){
+            for (int i = 0; i < 100; i++) {
+                System.out.print("☺");
+            }
+            System.out.println();
         }
     }
 

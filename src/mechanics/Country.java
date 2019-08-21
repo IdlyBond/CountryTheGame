@@ -51,18 +51,18 @@ public class Country extends Region {
     }
 
     public void changeStreetCost(){
-        buildingCost += Values.STREET_COST_CHANGE.get();
+        streetCost += Values.STREET_COST_CHANGE.get();
     }
 
     public void changeTownCost(){
-        buildingCost += Values.TOWN_COST_CHANGE.get();
+        townCost += Values.TOWN_COST_CHANGE.get();
     }
 
     @Override
     public void countStatistics(){
         if(getTowns().isEmpty()) return;
         for (Region town: towns) town.countStatistics();
-        Counter.countStatistics(towns, getStatistics());
+        Counter.countStatistics(towns, statistic);
         for(Region town: towns) town.clearBudget();
         ++steps;
     }

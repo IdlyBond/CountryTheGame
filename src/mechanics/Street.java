@@ -1,11 +1,11 @@
 package mechanics;
 
+import mechanics.buildings.*;
 import mechanics.utils.Printer;
 import mechanics.consts.Values;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Street extends Region {
     private List<Building> buildings = new ArrayList<>();
@@ -46,7 +46,9 @@ public class Street extends Region {
     public void countStatistics() {
         if(getBuildings().isEmpty()) return;
         for (Building building : buildings) {
-            building.work(getStatistics());
+            System.out.println("pre " + building.name + " " + statistic);
+            building.doWork(statistic);
+            System.out.println(building.name + " " + statistic);
         }
     }
 

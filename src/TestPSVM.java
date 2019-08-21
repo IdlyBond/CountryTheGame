@@ -8,9 +8,8 @@ public class TestPSVM {
         country.addTown("NEWРадужный");
         country.getTown(0).addStreet("Love mechanics.Street");
         country.getTown(0).addStreet("Penny Lane");
-        country.getTown(0).getStreet(0).addHospital("St. Marie mechanics.Hospital");
         country.getTown(0).getStreet(0).addFactory("Fucktory");
-        country.getTown(0).getStreet(0).addFactory("Fucktory2");
+        country.getTown(0).getStreet(0).addMonument("St. Marie Monument");
         Game game = new Game(country);
         game.mainMenu();
     }

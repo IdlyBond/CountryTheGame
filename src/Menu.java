@@ -21,10 +21,10 @@ public class Menu {
                     buildMenu();
                     break;
                 case 2:
-                    doStep();
+                    removeBuilding();
                     break;
                 case 3:
-                    removeBuilding();
+                    doStep();
                     break;
                 case 0:
                     return;
@@ -61,8 +61,8 @@ public class Menu {
         return Printer.printMenuWindow(country,
                 "Выберите действие: \n" +
                         "1) Построить здание.\n" +
-                        "2) Пойти спать. \n" +
-                        "3) Удалить здание. \n" +
+                        "2) Удалить здание. \n" +
+                        "3) Пойти спать. \n" +
                         "0) Назад. ");
     }
 

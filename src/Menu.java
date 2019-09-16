@@ -8,7 +8,7 @@ public class Menu {
     private Country country;
     private Worker worker;
     private int doingSteps;
-    private boolean didAction;
+    private boolean didAction = false;
 
     public Menu(Country country) {
         this.country = country;
@@ -18,7 +18,6 @@ public class Menu {
     public void menu() {
         while (true) {
             if(isGameOver()) return;
-            didAction = true;
             System.out.println(getMenuLine());
             switch (printNumber(0, 4)) {
                 case 1:
@@ -29,7 +28,7 @@ public class Menu {
                     break;
                 case 3:
                     if (didAction) System.out.println(Lines.DID_ACTION);
-                    if(country.getStatistics().getHappinessValue() < 50){
+                    else if(country.getStatistics().getHappinessValue() < 50){
                         System.out.println(Lines.NOT_ENOUGH_HAPPINESS_FOR_ACTION);
                     }
                     else doAction();
@@ -80,6 +79,7 @@ public class Menu {
     }
 
     private void doAction(){
+        didAction = true;
         doingSteps = country.getSteps();
         country.startAction();
     }

@@ -21,6 +21,7 @@ public class Country extends Region {
         ActionWriter.write(actions, this);
     }
 
+    //Делегирование
     public void startAction(){
         actions.start(this);
     }
@@ -38,6 +39,8 @@ public class Country extends Region {
         return towns;
     }
 
+
+    //Инкапсуляция
     public int getSteps() {
         return steps;
     }
@@ -66,6 +69,7 @@ public class Country extends Region {
         townCost += Values.TOWN_COST_CHANGE.get();
     }
 
+    //Полиморфизм
     @Override
     public void countStatistics(){
         if(getTowns().isEmpty()) return;

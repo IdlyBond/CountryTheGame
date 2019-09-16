@@ -21,14 +21,14 @@ public class Game {
         this.menu = new Menu(country);
     }
 
-    public void mainMenu(){
+    public void mainMenu() {
         while (true) {
-            System.out.println(Printer.createFrame(country.getName().toUpperCase() +" THE GAME"));
+            System.out.println(Printer.createFrame(country.getName().toUpperCase() + " THE GAME"));
             System.out.println("1) Игра\n" + "2) Титры\n" + "0) Выйти без сохранения");
             switch (Printer.printNumber(0, 2)) {
                 case 1:
                     menu.menu();
-                    if(menu.isGameOver()){
+                    if (menu.isGameOver()) {
                         gameOver();
                         return;
                     }
@@ -42,21 +42,19 @@ public class Game {
         }
     }
 
-    private void credits(){
-        while(true){
-            for (int i = 0; i < 100; i++) {
-                System.out.print(country.getName());
-            }
-            System.out.println();
+    private void credits() {
+        for (int i = 0; i < 100; i++) {
+            System.out.print(country.getName());
         }
+        System.out.println();
     }
 
-    private void gameOver(){
-        System.out.println(Printer.createFrame("ВЫ ПРОИГРАЛИ"));
+    private void gameOver() {
+        System.out.println(Printer.createFrame("ВЫ ОБАНКРОТИЛИСЬ"));
         System.out.println(Printer.createFrame("Ваша статистика: \n" + Printer.getStatistic(country)));
     }
 
-    private void initialization(){
+    private void initialization() {
         this.country = Worker.getCountry();
         System.out.println(Lines.NAME_FIRST_TOWN);
         this.country.addTown(Printer.printLine());
@@ -64,7 +62,7 @@ public class Game {
         this.country.getTown(0).addStreet(Printer.printLine());
     }
 
-    private void setStartBudget(){
+    private void setStartBudget() {
         country.getStatistics().changeBudget(Values.START_BUDGET.get());
     }
 

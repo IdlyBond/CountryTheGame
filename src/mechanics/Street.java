@@ -7,7 +7,8 @@ import mechanics.consts.Values;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Street extends Region {
+
+public class Street extends Region { //Наследование
     private List<Building> buildings = new ArrayList<>();
 
     public Street(String name) {

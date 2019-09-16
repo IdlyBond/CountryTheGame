@@ -1,12 +1,14 @@
 import mechanics.Country;
+import mechanics.consts.Lines;
 import mechanics.utils.Printer;
 
 import static mechanics.utils.Printer.printNumber;
 
 public class Menu {
     private Country country;
-
     private Worker worker;
+    private int doingSteps;
+    private boolean didAction;
 
     public Menu(Country country) {
         this.country = country;
@@ -15,8 +17,10 @@ public class Menu {
 
     public void menu() {
         while (true) {
+            if(isGameOver()) return;
+            didAction = true;
             System.out.println(getMenuLine());
-            switch (printNumber(0, 3)) {
+            switch (printNumber(0, 4)) {
                 case 1:
                     buildMenu();
                     break;
@@ -24,7 +28,17 @@ public class Menu {
                     removeBuilding();
                     break;
                 case 3:
-                    doStep();
+                    if (didAction) System.out.println(Lines.DID_ACTION);
+                    if(country.getStatistics().getHappinessValue() < 50){
+                        System.out.println(Lines.NOT_ENOUGH_HAPPINESS_FOR_ACTION);
+                    }
+                    else doAction();
+                    break;
+                case 4:
+                    if(stepNotPossible()){
+                        System.out.println(Printer.createFrame(Lines.DO_SOMETHING.get()));
+                    }
+                    else doStep();
                     break;
                 case 0:
                     return;
@@ -37,32 +51,51 @@ public class Menu {
         switch (printNumber(0, 3)) {
             case 1:
                 worker.createBuilding();
+                doingSteps = country.getSteps();
                 break;
             case 2:
                 worker.createStreet();
+                doingSteps = country.getSteps();
                 break;
             case 3:
                 worker.createTown();
+                doingSteps = country.getSteps();
                 break;
             case 0:
         }
     }
 
+    private boolean stepNotPossible(){
+        return doingSteps < country.getSteps() - 1;
+    }
+
+    public boolean isGameOver(){
+        return (country.getStatistics().getBudgetValue() < country.getBuildingCost() && stepNotPossible());
+    }
+
     private void doStep() {
+        didAction = false;
         country.countStatistics();
         worker.resetBuilt();
     }
 
+    private void doAction(){
+        doingSteps = country.getSteps();
+        country.startAction();
+    }
+
     private void removeBuilding(){
+        doingSteps = country.getSteps();
         worker.removeBuilding();
     }
 
     private String getMenuLine() {
         return Printer.printMenuWindow(country,
                 "Выберите действие: \n" +
-                        "1) Построить здание.\n" +
+                        "1) Построить.\n" +
                         "2) Удалить здание. \n" +
-                        "3) Пойти спать. \n" +
+                        "3) Устроить прием граждан. \n" +
+                        "4) Пойти спать. \n" +
                         "0) Назад. ");
     }
 
@@ -75,7 +108,4 @@ public class Menu {
                         "0) Назад. ");
     }
 
-    public Worker getWorker() {
-        return worker;
-    }
 }

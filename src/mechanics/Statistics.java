@@ -3,6 +3,7 @@ package mechanics;
 import mechanics.consts.Values;
 
 public abstract class Statistics {
+    // Наследуемый класс статистики
     protected double value;
 
     public double get() {

@@ -3,8 +3,8 @@ package mechanics.utils;
 import mechanics.Country;
 import mechanics.Street;
 import mechanics.Town;
-import mechanics.consts.BuildingPerks;
-import mechanics.consts.BuildingTypes;
+import mechanics.buildings.buildingConsts.BuildingPerks;
+import mechanics.buildings.buildingConsts.BuildingTypes;
 import mechanics.consts.Icons;
 import mechanics.consts.Values;
 
@@ -38,7 +38,7 @@ public class Printer {
 
     public static String createFrame(String picture){
         return createUpBorder() +
-                createMiddleWithBorders(makeLineArray(picture)) +
+                createMiddleWithBorders(makeLineArray(fitLineToMenu(picture))) +
                 createDownBorder();
     }
 
@@ -162,6 +162,26 @@ public class Printer {
 
     private static String[] makeLineArray(String line){
         return line.split("\\r?\\n");
+    }
+
+    private static String fitLineToMenu(String line){
+        StringBuilder out = new StringBuilder();
+        while (line.length() > Values.PRINT_MENU_LENGTH.get() - 5){
+            if(line.contains("\n") && line.substring(0, line.indexOf("\n")).length() > Values.PRINT_MENU_LENGTH.get() - 5){
+                out.append(line, 0, Values.PRINT_MENU_LENGTH.get() - 4).append("\n");
+                line = line.replace(line.substring(0, Values.PRINT_MENU_LENGTH.get() - 4), "");
+            }
+            else if(line.contains("\n")){
+                out.append(line, 0, line.indexOf("\n") + 1);
+                line = line.replace(line.substring(0, line.indexOf("\n") + 1), "");
+            }
+            else {
+                out.append(line, 0, Values.PRINT_MENU_LENGTH.get() - 4).append("\n");
+                line = line.replace(line.substring(0, Values.PRINT_MENU_LENGTH.get() - 4), "");
+            }
+        }
+        out.append(line);
+        return out.toString();
     }
 
     public static String printLine(){

@@ -7,6 +7,7 @@ public class Statistic {
     private Budget budget = new Budget();
     private Ecology ecology = new Ecology();
     private Tourism tourism = new Tourism();
+    // Класс обертка для всей статистики
 
     public double getHappinessValue() {
         return happiness.get();
@@ -42,6 +43,13 @@ public class Statistic {
 
     public void changeTourism(double value){
         tourism.change(value);
+    }
+
+    public void changeStatistic(double happiness, double budget, double ecology, double tourism){
+        this.happiness.change(happiness);
+        this.budget.change(budget);
+        this.ecology.change(ecology);
+        this.tourism.change(tourism);
     }
 
     public String toString(){

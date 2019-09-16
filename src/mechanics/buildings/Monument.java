@@ -1,7 +1,7 @@
 package mechanics.buildings;
 
 import mechanics.Statistic;
-import mechanics.consts.BuildingPerks;
+import mechanics.buildings.buildingConsts.BuildingPerks;
 
 public class Monument extends Building{
 

@@ -1,6 +1,5 @@
-package mechanics.consts;
+package mechanics.buildings.buildingConsts;
 
-import java.util.ArrayList;
 
 public enum BuildingTypes {
     HOSPITAL("Больница"),

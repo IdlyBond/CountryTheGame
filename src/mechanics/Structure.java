@@ -1,6 +1,7 @@
 package mechanics;
 
 public abstract class Structure {
+    // Базовый наследуемый класс для любой структкры
     protected String name;
 
     public Structure(String name) {

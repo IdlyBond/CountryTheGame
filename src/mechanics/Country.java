@@ -1,5 +1,7 @@
 package mechanics;
 
+import actions.ActionWriter;
+import actions.Actions;
 import mechanics.utils.Printer;
 import mechanics.consts.Values;
 
@@ -8,6 +10,7 @@ import java.util.List;
 
 public class Country extends Region {
     private List<Region> towns = new ArrayList<>();
+    private Actions actions = new Actions();
     private int buildingCost = Values.START_BUILDING_COST.get();
     private int streetCost = Values.START_STREET_COST.get();
     private int townCost = Values.START_TOWN_COST.get();
@@ -15,6 +18,11 @@ public class Country extends Region {
 
     public Country(String name) {
         super(name);
+        ActionWriter.write(actions, this);
+    }
+
+    public void startAction(){
+        actions.start(this);
     }
 
     public void addTown(String name){
@@ -61,10 +69,12 @@ public class Country extends Region {
     @Override
     public void countStatistics(){
         if(getTowns().isEmpty()) return;
+        StatisticActions.doActions(this);
         for (Region town: towns) town.countStatistics();
         Counter.countStatistics(towns, statistic);
         for(Region town: towns) town.clearBudget();
         ++steps;
+        actions.doStep(this);
     }
 
     @Override

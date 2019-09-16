@@ -1,6 +1,9 @@
 package mechanics;
 
 import mechanics.consts.Values;
+import mechanics.utils.Printer;
+
+import java.util.Random;
 
 public class Happiness extends Statistics {
     @Override

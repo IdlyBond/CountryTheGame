@@ -28,6 +28,10 @@ public class Game {
             switch (Printer.printNumber(0, 2)) {
                 case 1:
                     menu.menu();
+                    if(menu.isGameOver()){
+                        gameOver();
+                        return;
+                    }
                     break;
                 case 2:
                     credits();
@@ -41,10 +45,15 @@ public class Game {
     private void credits(){
         while(true){
             for (int i = 0; i < 100; i++) {
-                System.out.print("☺");
+                System.out.print(country.getName());
             }
             System.out.println();
         }
+    }
+
+    private void gameOver(){
+        System.out.println(Printer.createFrame("ВЫ ПРОИГРАЛИ"));
+        System.out.println(Printer.createFrame("Ваша статистика: \n" + Printer.getStatistic(country)));
     }
 
     private void initialization(){

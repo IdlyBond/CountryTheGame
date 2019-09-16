@@ -46,9 +46,7 @@ public class Street extends Region {
     public void countStatistics() {
         if(getBuildings().isEmpty()) return;
         for (Building building : buildings) {
-            System.out.println("pre " + building.name + " " + statistic);
             building.doWork(statistic);
-            System.out.println(building.name + " " + statistic);
         }
     }
 

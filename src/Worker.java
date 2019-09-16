@@ -1,7 +1,7 @@
 import mechanics.Country;
 import mechanics.Street;
 import mechanics.Town;
-import mechanics.consts.BuildingTypes;
+import mechanics.buildings.buildingConsts.BuildingTypes;
 import mechanics.consts.Values;
 import mechanics.consts.Lines;
 import mechanics.utils.Printer;
